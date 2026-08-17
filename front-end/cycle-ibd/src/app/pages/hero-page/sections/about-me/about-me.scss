@@ -1,0 +1,29 @@
+.wrapper{
+  background: #42F65D;
+  height: 100%;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 256px;
+}
+
+h1{
+  font-size: 100px;
+}
+
+p{
+  font-weight: 450;
+  font-size: 40px;
+  line-height: 80px;
+}
+
+section{
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 128px;
+}
+
+img{ width: 500px;
+}

@@ -1,0 +1,31 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background: #1A132A;
+  padding: 0px 48px;
+  color: white;
+}
+
+.wrapper > *{
+  padding: 32px 0px;
+}
+
+
+
+button{
+  all: unset;
+  text-align: center;
+  font-weight: 200;
+  font-size: 84px;
+
+}
+img{
+  width: 1250px;
+}
+
+.logo{
+  display: flex;
+  justify-content: center;
+}

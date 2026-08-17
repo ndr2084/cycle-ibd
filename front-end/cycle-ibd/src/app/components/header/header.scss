@@ -1,0 +1,27 @@
+ul{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+ul  > :first-child{
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+img{
+  width: 90px;
+}
+
+ul  > :last-child{
+  flex-grow: 1;
+  flex-shrink: 0;
+  text-align: end;
+}
+
+h1{
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -3%;
+}
