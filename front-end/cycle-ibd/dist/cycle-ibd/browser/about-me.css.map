@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/hero-page/sections/about-me/about-me.scss"],
-  "sourcesContent": [".wrapper{\n  background: #42F65D;\n  height: 100%;\n  color: black;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 256px;\n}\n\nh1{\n  font-size: 100px;\n}\n\np{\n  font-weight: 450;\n  font-size: 40px;\n  line-height: 80px;\n}\n\nsection{\n  width: 1000px;\n  display: flex;\n  flex-direction: column;\n  gap: 128px;\n}\n\nimg{ width: 500px;\n}\n"],
-  "mappings": ";AAAA,CAAA;AACE,cAAA;AACA,UAAA;AACA,SAAA;AACA,WAAA;AACA,mBAAA;AACA,eAAA;AACA,OAAA;;AAGF;AACE,aAAA;;AAGF;AACE,eAAA;AACA,aAAA;AACA,eAAA;;AAGF;AACE,SAAA;AACA,WAAA;AACA,kBAAA;AACA,OAAA;;AAGF;AAAK,SAAA;;",
-  "names": []
-}

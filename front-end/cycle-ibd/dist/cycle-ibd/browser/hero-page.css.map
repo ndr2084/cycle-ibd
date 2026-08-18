@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/hero-page/hero-page.scss"],
-  "sourcesContent": ["\napp-hero-section{\n  display: block;\n  height: 100%;\n}\n\napp-about-me{\n  display: block;\n  height: 100%;\n}\n\napp-what-im-doing{\n  display: block;\n  height: 100%;\n}\n\napp-my-mission{\n  display: block;\n  height: 100%;\n}\n\n"],
-  "mappings": ";AACA;AACE,WAAA;AACA,UAAA;;AAGF;AACE,WAAA;AACA,UAAA;;AAGF;AACE,WAAA;AACA,UAAA;;AAGF;AACE,WAAA;AACA,UAAA;;",
-  "names": []
-}

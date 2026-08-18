@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/app.scss"],
-  "sourcesContent": ["\nmain{\ndisplay: block;\nheight: 100%;\n}\n\n\n"],
-  "mappings": ";AACA;AACA,WAAA;AACA,UAAA;;",
-  "names": []
-}

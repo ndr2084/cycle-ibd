@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/hero-page/what-im-doing/what-im-doing.scss"],
-  "sourcesContent": [".wrapper{\n  height: 100%;\n  background: #E0FF56;\n  letter-spacing: -4%;\n  font-size: 64px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 256px;\n}\n\n.title{\n  width: 500px;\n\n}\n\np{\n  font-weight: 500;\n  font-size: 40px;\n  line-height: 80px;\n  width: 1000px;\n}\n"],
-  "mappings": ";AAAA,CAAA;AACE,UAAA;AACA,cAAA;AACA,kBAAA;AACA,aAAA;AACA,WAAA;AACA,mBAAA;AACA,eAAA;AACA,OAAA;;AAGF,CAAA;AACE,SAAA;;AAIF;AACE,eAAA;AACA,aAAA;AACA,eAAA;AACA,SAAA;;",
-  "names": []
-}
