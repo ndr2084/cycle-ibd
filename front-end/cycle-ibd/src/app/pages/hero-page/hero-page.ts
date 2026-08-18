@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Header } from "../../components/header/header";
 import { HeroSection } from './sections/hero-section/hero-section';
 import { AboutMe } from './sections/about-me/about-me';
-import { WhatImDoing } from "./what-im-doing/what-im-doing";
+import { WhatImDoing } from "./sections/what-im-doing/what-im-doing";
 import { MyMission } from './sections/my-mission/my-mission';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -19,6 +19,8 @@ export class HeroPage {
   ngAfterViewInit() {
     var panels = gsap.utils.toArray(".section");
     panels.pop();
+
+    const triggers: ScrollTrigger[] = [];
 
     panels.forEach((panel: any, i) => {
 
@@ -47,19 +49,22 @@ export class HeroPage {
           trigger: panel,
           start: "bottom bottom",
           end: () => fakeScrollRatio ? `+=${innerpanel.offsetHeight}` : "bottom top",
-          pinSpacing: false,
-          pin: true,
+
           scrub: true
         }
       });
+
+      triggers.push(tl.scrollTrigger as ScrollTrigger);
 
       // fake scroll. We use 1 because that's what the rest of the timeline consists of (0.9 scale + 0.1 fade)
       if (fakeScrollRatio) {
         tl.to(innerpanel, {yPercent:-100, y: window.innerHeight, duration: 1 / (1 - fakeScrollRatio) - 1, ease: "none"});
       }
-      tl.fromTo(panel, {scale:0.9, opacity:1}, {scale: 1.0, opacity: 1, duration: 0.1})
+      tl.fromTo(panel, {scale:1.0, opacity:1}, {scale: 0.9, opacity: 1, duration: 0.1})
         .to(panel, {scale: 1.00, opacity:0.0, duration: 0.1});
     });
-  }
 
+    // Snap to the resting point of each panel (the start of its pin) plus the
+    // final panel's top, once all pin/scrub ScrollTriggers above have run.
+  }
 }

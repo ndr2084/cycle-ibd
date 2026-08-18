@@ -1,11 +1,11 @@
 .wrapper{
-  background: #42F65D;
   height: 100%;
   color: black;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 256px;
+  gap: 32px;
+  position: relative;
 }
 
 h1{
@@ -22,8 +22,32 @@ section{
   width: 1000px;
   display: flex;
   flex-direction: column;
-  gap: 128px;
+  gap: 32px;
+  padding: 16px;
+
+  height: 90%;
+  width: 80%;
+  justify-content: center;
+  align-items: start;
 }
 
-img{ width: 500px;
+.text-wrapper{
+  width: 1000px;
+  background: #42F65D;
+  letter-spacing: -4%;
+  padding: 32px;
+}
+
+.title{
+  background: #42F65D;
+  padding: 32px;
+  letter-spacing: -4%;
+  width: 350px;
+  position: aboluste;
+}
+
+img{
+  margin: 32px;
+  width: 450px;
+  border: 3px solid white;
 }

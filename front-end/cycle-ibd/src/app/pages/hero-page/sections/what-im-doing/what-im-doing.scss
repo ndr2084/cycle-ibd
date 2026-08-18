@@ -1,6 +1,5 @@
 .wrapper{
   height: 100%;
-  background: #E0FF56;
   letter-spacing: -4%;
   font-size: 64px;
   display: flex;
@@ -10,7 +9,10 @@
 }
 
 .title{
-  width: 500px;
+  padding: 32px;
+  width: 450px;
+  border: 1px solid green;
+  background: #E0FF56;
 
 }
 
@@ -19,4 +21,10 @@ p{
   font-size: 40px;
   line-height: 80px;
   width: 1000px;
+}
+
+.text-section{
+  background: #E0FF56;
+  padding: 32px;
+  border-radius: 4px;
 }

@@ -1,6 +1,7 @@
 .wrapper{
   height: 100%;
-  background: #FF8E5D;
+
+  color: white;
   letter-spacing: -4%;
   font-size: 64px;
   display: flex;
@@ -10,7 +11,13 @@
 }
 
 .title{
-  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  height: 400px;
+  background: #d02822;
+  padding: 32px;
 
 }
 
@@ -19,4 +26,6 @@ p{
   font-size: 40px;
   line-height: 80px;
   width: 1000px;
+  padding: 32px;
+  background: #d02822;
 }
