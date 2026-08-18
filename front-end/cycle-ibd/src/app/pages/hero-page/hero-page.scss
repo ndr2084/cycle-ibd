@@ -1,9 +1,21 @@
 
-.section{
+app-hero-section{
   display: block;
-  position: fixed;
-  top: 0;
   height: 100%;
-  width: 100%;
-  visibility: hidden;
 }
+
+app-about-me{
+  display: block;
+  height: 100%;
+}
+
+app-what-im-doing{
+  display: block;
+  height: 100%;
+}
+
+app-my-mission{
+  display: block;
+  height: 100%;
+}
+
