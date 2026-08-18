@@ -1,0 +1,25 @@
+/* src/styles.scss */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+html,
+body {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Outfit", sans-serif;
+  background: black;
+}
+li,
+ul {
+  all: unset;
+}
+
+/* angular:styles/global:styles */
+/*# sourceMappingURL=styles.css.map */

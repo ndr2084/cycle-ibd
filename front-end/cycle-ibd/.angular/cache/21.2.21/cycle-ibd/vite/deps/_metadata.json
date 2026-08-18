@@ -1,0 +1,70 @@
+{
+  "hash": "6993177d",
+  "configHash": "eacdb7af",
+  "lockfileHash": "fa891856",
+  "browserHash": "e045d2d6",
+  "optimized": {
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "54f11cd7",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "2673ca64",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "1be9b6b7",
+      "needsInterop": false
+    },
+    "gsap": {
+      "src": "../../../../../../node_modules/gsap/index.js",
+      "file": "gsap.js",
+      "fileHash": "2b9c8e6b",
+      "needsInterop": false
+    },
+    "gsap/ScrollTrigger": {
+      "src": "../../../../../../node_modules/gsap/ScrollTrigger.js",
+      "file": "gsap_ScrollTrigger.js",
+      "fileHash": "e6c4a09e",
+      "needsInterop": false
+    },
+    "gsap/SplitText": {
+      "src": "../../../../../../node_modules/gsap/SplitText.js",
+      "file": "gsap_SplitText.js",
+      "fileHash": "251da3aa",
+      "needsInterop": false
+    },
+    "gsap/Observer": {
+      "src": "../../../../../../node_modules/gsap/Observer.js",
+      "file": "gsap_Observer.js",
+      "fileHash": "13c888b2",
+      "needsInterop": false
+    },
+    "gsap/MotionPathPlugin": {
+      "src": "../../../../../../node_modules/gsap/MotionPathPlugin.js",
+      "file": "gsap_MotionPathPlugin.js",
+      "fileHash": "c6457ff3",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-T7QII62R": {
+      "file": "chunk-T7QII62R.js"
+    },
+    "chunk-6OP5WRGK": {
+      "file": "chunk-6OP5WRGK.js"
+    },
+    "chunk-FO5GWGV4": {
+      "file": "chunk-FO5GWGV4.js"
+    },
+    "chunk-GOMI4DH3": {
+      "file": "chunk-GOMI4DH3.js"
+    }
+  }
+}

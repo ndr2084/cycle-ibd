@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/header/header.scss"],
+  "sourcesContent": ["ul{\n  display: flex;\n  width: 100%;\n  justify-content: space-between;\n  gap: 32px;\n}\n\nul  > :first-child{\n  flex-grow: 1;\n  flex-shrink: 0;\n}\n\nimg{\n  width: 90px;\n}\n\nul  > :last-child{\n  flex-grow: 1;\n  flex-shrink: 0;\n  text-align: end;\n}\n\nh1{\n  font-size: 32px;\n  font-weight: 800;\n  letter-spacing: -3%;\n}\n"],
+  "mappings": ";AAAA;AACE,WAAA;AACA,SAAA;AACA,mBAAA;AACA,OAAA;;AAGF,GAAA,EAAA;AACE,aAAA;AACA,eAAA;;AAGF;AACE,SAAA;;AAGF,GAAA,EAAA;AACE,aAAA;AACA,eAAA;AACA,cAAA;;AAGF;AACE,aAAA;AACA,eAAA;AACA,kBAAA;;",
+  "names": []
+}

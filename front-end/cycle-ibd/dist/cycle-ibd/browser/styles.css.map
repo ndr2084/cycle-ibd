@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/styles.scss"],
+  "sourcesContent": ["/* You can add global styles to this file, and also import other style files */\n*{\n  margin: 0 ;\n  padding: 0 ;\n  font-family: \"Inter\", sans-serif;\n  font-optical-sizing: auto;\n  font-style: normal;\n}\n\nhtml, body{\n    box-sizing: border-box;\n    height: 100%;\n    width :100%;\n    margin: 0;\n    padding: 0;\n    font-family: \"Outfit\", sans-serif;\n    background: black;\n}\n\nli, ul{\n  all: unset;\n}\n\n\n\n\n"],
+  "mappings": ";AACA;AACE,UAAA;AACA,WAAA;AACA,eAAA,OAAA,EAAA;AACA,uBAAA;AACA,cAAA;;AAGF;AAAA;AACI,cAAA;AACA,UAAA;AACA,SAAA;AACA,UAAA;AACA,WAAA;AACA,eAAA,QAAA,EAAA;AACA,cAAA;;AAGJ;AAAA;AACE,OAAA;;",
+  "names": []
+}
