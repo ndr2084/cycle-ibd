@@ -15,15 +15,16 @@ export class AboutMe {
   private slider!: HTMLElement;
 
   ngAfterViewInit() {
-    this.slider = document.querySelector('.inner-wrapper') as HTMLElement;
+    this.slider = document.querySelector('.slider') as HTMLElement;
   }
 
   private isAnimating = false;
 
   private moveCard() {
-    const lastItem = this.slider?.querySelector('section:last-child');
+    const lastItem = this.slider?.querySelector('.card:nth-child(3)');
 
     if (this.slider && lastItem) {
+      console.log("child element exists")
       this.slider.insertBefore(lastItem, this.slider.firstChild);
     }
   }
@@ -31,7 +32,7 @@ export class AboutMe {
   clickCard() {
     if (this.isAnimating) return;
 
-    const cards = Array.from(this.slider.querySelectorAll('section')) as HTMLElement[];
+    const cards = Array.from(this.slider.querySelectorAll('.card')) as HTMLElement[];
     const frontCard = cards[cards.length - 1];
     const otherCards = cards.filter((card) => card !== frontCard);
 
@@ -39,10 +40,10 @@ export class AboutMe {
 
     gsap.timeline({ onComplete: () => (this.isAnimating = false) })
       .to(frontCard, {
-        y: -40,
-        opacity: 0,
-        duration: 0.4,
-        ease: 'power1.in',
+        y: -50,
+        opacity: 0.1,
+        duration: 0.35,
+        ease: 'power1.inOut',
       })
       .call(() => {
         const state = Flip.getState(otherCards);
@@ -51,8 +52,8 @@ export class AboutMe {
 
         Flip.from(state, {
           targets: otherCards,
-          duration: 0.5,
-          ease: 'power2.inOut',
+          duration: 0.3,
+          ease: 'power2.in',
           absolute: true,
         });
 

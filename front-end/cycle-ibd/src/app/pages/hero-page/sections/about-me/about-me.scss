@@ -36,14 +36,14 @@ p{
   height: 100%;
 }
 
-.inner-wrapper{
+.slider{
   width: 450px;
   height: 650px;
   position: relative;
   transform: translateY(10%);
 }
 
-section{
+.card{
   position: absolute;
   border-radius: 20px;
   height: 450px;
@@ -53,58 +53,57 @@ section{
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  padding: 16px;
+  gap: 34px;
 }
 
 /* Stack slot = position in the DOM, not which section it is —
    clickCard() moves the front card to the back of the DOM, and
    these rules make it jump to the back-most visual slot. */
-section:nth-child(1){
+.card:nth-child(1){
   top: 50px;
   left: 50px;
   z-index: 1;
 }
 
-section:nth-child(2){
+.card:nth-child(2){
   top: 25px;
   left: 25px;
   z-index: 2;
 }
 
-section:nth-child(3){
+.card:nth-child(3){
   top: 0;
   left: 0;
   z-index: 3;
 }
 
-.outer{
-  flex-grow: 0;
-}
 
-.section-one{
+.card-one{
  background-color:  #42F65D;
 }
 
-.section-two{
+.card-two{
   background: #E0FF56;
 }
 
-.section-three{
+.card-three{
   background: #FF8E5D;
 }
 
 .text-section{
   letter-spacing: -4%;
-  padding: 32px;
 
 }
 
 .title{
-  padding-left: 32px;
+  width: 100%;
+
   letter-spacing: -4%;
 }
 
 img{
-  width: 500px;
+  width: 300px;
 }
 
 
