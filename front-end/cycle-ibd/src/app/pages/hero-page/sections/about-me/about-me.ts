@@ -12,28 +12,38 @@ gsap.registerPlugin(ScrollTrigger, SplitText, Flip);
   styleUrl: './about-me.scss',
 })
 export class AboutMe {
+
   private slider!: HTMLElement;
+  private isAnimating = false;
+  private parallaxTweens: gsap.core.Tween[] = [];
 
   ngAfterViewInit() {
-    this.slider = document.querySelector('.slider') as HTMLElement;
+    const layers: [string, number][] = [
+      ['.scroller-road-lines', 2],
+      ['.scroller-near-trees', 5],
+      ['.scroller-far-trees', 20],
+      ['.scroller-mountains', 120],
+    ];
+
+    this.parallaxTweens = layers.map(([selector, duration]) =>
+      gsap.to(selector, {
+        x: -700,
+        duration,
+        ease: 'none',
+        repeat: -1,
+      })
+    );
   }
 
-  private isAnimating = false;
-
-  private moveCard() {
-    const lastItem = this.slider?.querySelector('.card:nth-child(1)');
-
-    if (this.slider && lastItem) {
-      console.log("child element exists")
-      this.slider.insertBefore(this.slider.firstChild!, null);
-    }
+  ngOnDestroy() {
+    this.parallaxTweens.forEach((tween) => tween.kill());
   }
 
   clickCard() {
+    this.slider = document.querySelector('.slider') as HTMLElement;
     if (this.isAnimating) return;
 
     const cards = Array.from(this.slider.querySelectorAll('.card')) as HTMLElement[];
-    const backCard = cards[cards.length -1];
     const frontCard = cards[0];
     const otherCards = cards.filter((card) => card !== frontCard);
 
@@ -60,18 +70,23 @@ export class AboutMe {
           absolute: true,
         });
 
-        gsap.set(frontCard, {y:-80, x: 0});
+        gsap.set(frontCard, { y: -80, x: 0 });
       })
       .to(frontCard, {
 
-        y:0,
+        y: 0,
         opacity: 1.0,
         duration: 0.18,
         ease: 'power1.out',
       });
-
-    gsap.to("img", {
-      x: 500, duration: 2
-    });
   }
+  private moveCard() {
+    const lastItem = this.slider?.querySelector('.card:nth-child(1)');
+    if (this.slider && lastItem) {
+      console.log("child element exists")
+      this.slider.insertBefore(this.slider.firstChild!, null);
+    }
+  }
+
+
 }
