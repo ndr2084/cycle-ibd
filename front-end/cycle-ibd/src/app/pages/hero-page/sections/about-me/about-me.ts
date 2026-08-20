@@ -122,7 +122,7 @@ export class AboutMe {
           }, 0.5)
 
           .to(cyclist,{
-            x: 1800,
+            x: 1250,
             duration: 2,
             opacity: 0,
           }, 0.75);
