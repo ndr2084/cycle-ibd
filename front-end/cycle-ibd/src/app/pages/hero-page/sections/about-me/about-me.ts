@@ -25,14 +25,15 @@ export class AboutMe {
       ['.scroller-mountains', 120],
     ];
 
-    this.parallaxTweens = layers.map(([selector, duration]) =>
-      gsap.to(selector, {
-        x: -700,
-        duration,
-        ease: 'none',
-        repeat: -1,
-      })
-    );
+    this.parallaxTweens = layers
+      .map(([selector, duration]) => gsap
+        .to(selector, {
+          x: -700,
+          duration,
+          ease: 'none',
+          repeat: -1,
+        })
+      );
   }
 
   ngOnDestroy() {
@@ -60,7 +61,7 @@ export class AboutMe {
       .call(() => {
         const state = Flip.getState(otherCards);
 
-        this.moveCard();
+        this.moveFrontCardToBack(frontCard);
 
         Flip.from(state, {
           targets: otherCards,
@@ -80,9 +81,8 @@ export class AboutMe {
         ease: 'power1.out',
       });
   }
-  private moveCard() {
-    const lastItem = this.slider?.querySelector('.card:nth-child(1)');
-    if (this.slider && lastItem) {
+  private moveFrontCardToBack(frontCard: HTMLElement) {
+    if (this.slider && frontCard) {
       console.log("child element exists")
       this.slider.insertBefore(this.slider.firstChild!, null);
     }
