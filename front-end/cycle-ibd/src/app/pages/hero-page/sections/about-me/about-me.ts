@@ -21,11 +21,11 @@ export class AboutMe {
   private isAnimating = false;
 
   private moveCard() {
-    const lastItem = this.slider?.querySelector('.card:nth-child(3)');
+    const lastItem = this.slider?.querySelector('.card:nth-child(1)');
 
     if (this.slider && lastItem) {
       console.log("child element exists")
-      this.slider.insertBefore(lastItem, this.slider.firstChild);
+      this.slider.insertBefore(this.slider.firstChild!, null);
     }
   }
 
@@ -33,16 +33,18 @@ export class AboutMe {
     if (this.isAnimating) return;
 
     const cards = Array.from(this.slider.querySelectorAll('.card')) as HTMLElement[];
-    const frontCard = cards[cards.length - 1];
+    const backCard = cards[cards.length -1];
+    const frontCard = cards[0];
     const otherCards = cards.filter((card) => card !== frontCard);
 
     this.isAnimating = true;
 
     gsap.timeline({ onComplete: () => (this.isAnimating = false) })
       .to(frontCard, {
-        y: -50,
-        opacity: 0.1,
-        duration: 0.35,
+        y: -40,
+        x: 70,
+        opacity: 0.95,
+        duration: 0.22,
         ease: 'power1.inOut',
       })
       .call(() => {
@@ -52,18 +54,24 @@ export class AboutMe {
 
         Flip.from(state, {
           targets: otherCards,
-          duration: 0.3,
+          duration: 0.25,
+          opacity: 1.0,
           ease: 'power2.in',
           absolute: true,
         });
 
-        gsap.set(frontCard, { y: 40 });
+        gsap.set(frontCard, {y:-80, x: 0});
       })
       .to(frontCard, {
-        y: 0,
-        opacity: 1,
-        duration: 0.4,
+
+        y:0,
+        opacity: 1.0,
+        duration: 0.18,
         ease: 'power1.out',
       });
+
+    gsap.to("img", {
+      x: 500, duration: 2
+    });
   }
 }
