@@ -16,13 +16,19 @@ export class AboutMe {
   private slider!: HTMLElement;
   private isAnimating = false;
   private parallaxTweens: gsap.core.Tween[] = [];
+  private readonly parallaxSelectors = [
+    '.scroller-road-lines',
+    '.scroller-near-trees',
+    '.scroller-far-trees',
+    '.scroller-mountains',
+  ];
 
   ngAfterViewInit() {
     const layers: [string, number][] = [
-      ['.scroller-road-lines', 2],
-      ['.scroller-near-trees', 5],
-      ['.scroller-far-trees', 20],
-      ['.scroller-mountains', 120],
+      [this.parallaxSelectors[0], 2],
+      [this.parallaxSelectors[1], 5],
+      [this.parallaxSelectors[2], 20],
+      [this.parallaxSelectors[3], 120],
     ];
 
     this.parallaxTweens = layers
@@ -47,17 +53,41 @@ export class AboutMe {
     const cards = Array.from(this.slider.querySelectorAll('.card')) as HTMLElement[];
     const frontCard = cards[0];
     const otherCards = cards.filter((card) => card !== frontCard);
+    const isMissionCard = frontCard.classList.contains('card-three');
 
     this.isAnimating = true;
 
-    gsap.timeline({ onComplete: () => (this.isAnimating = false) })
+    const tl = gsap.timeline({ onComplete: () => (this.isAnimating = false) });
+
+    if (isMissionCard) {
+      // Whip pan: ramp each parallax layer's playback speed and stretch it
+      // horizontally over 1s to sell the illusion of a fast forward acceleration.
+      tl.to(this.parallaxTweens, {
+        timeScale: 12,
+
+        duration: 1,
+        ease: 'power2.in',
+      }, 0)
+        .to(this.parallaxSelectors, {
+          scaleX: 1.6,
+          transformOrigin: 'right center',
+          duration: 1,
+          opacity: 0,
+
+          ease: 'power2.in',
+        }, 1)
+        .set(this.parallaxTweens, { timeScale: 1 })
+        .set(this.parallaxSelectors, { scaleX: 1 });
+    }
+
+    tl
       .to(frontCard, {
         y: -40,
         x: 70,
         opacity: 0.95,
         duration: 0.22,
         ease: 'power1.inOut',
-      })
+      }, 0)
       .call(() => {
         const state = Flip.getState(otherCards);
 
