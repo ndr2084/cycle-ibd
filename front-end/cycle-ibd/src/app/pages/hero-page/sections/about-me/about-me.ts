@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { Flip } from "gsap/Flip";
+import { last } from 'rxjs';
 gsap.registerPlugin(ScrollTrigger, SplitText, Flip);
 
 @Component({
@@ -13,6 +14,8 @@ gsap.registerPlugin(ScrollTrigger, SplitText, Flip);
 })
 export class AboutMe {
 
+  scene = ['about-us', 'getting-started'];
+  nextScene = signal(this.scene[0]);
   private slider!: HTMLElement;
   private isAnimating = false;
   private parallaxTweens: gsap.core.Tween[] = [];
@@ -22,6 +25,8 @@ export class AboutMe {
     '.scroller-far-trees',
     '.scroller-mountains',
   ];
+
+
 
   ngAfterViewInit() {
     const layers: [string, number][] = [
@@ -93,47 +98,54 @@ export class AboutMe {
         ease: 'power1.out',
       });
 
-      if (isMissionCard) {
-        // Whip pan: ramp each parallax layer's playback speed and stretch it
-        // horizontally over 1s to sell the illusion of a fast forward acceleration.
-        tl.to(this.parallaxTweens, {
-          timeScale: 12,
-          duration: 1,
+    if (isMissionCard) {
+      const duration_a = [1, 0],
+       duration_b = [1,1],
+        duration_c = [1, 1],
+         duration_d = [1, 0.5],
+          duration_e = [1,0.5];
+      const animation_length = [duration_a, duration_b, duration_c, duration_d, duration_e];
+      // Whip pan: ramp each parallax layer's playback speed and stretch it
+      // horizontally over 1s to sell the illusion of a fast forward acceleration.
+      tl.to(this.parallaxTweens, {
+        timeScale: 12,
+        duration: duration_a[0],
+        ease: 'power2.in',
+      }, duration_a[1])
+        .to(this.parallaxSelectors, {
+          scaleX: 1.6,
+          transformOrigin: 'right center',
+          duration:  duration_b[0],
+          opacity: 0,
+
           ease: 'power2.in',
-        }, 0)
-          .to(this.parallaxSelectors, {
-            scaleX: 1.6,
-            transformOrigin: 'right center',
-            duration: 1,
-            opacity: 0,
+        },  duration_b[1])
 
-            ease: 'power2.in',
-          }, 1)
+        .to(road, {
+          opacity: 0,
+          duration:  duration_c[0],
+        },  duration_c[1])
 
-          .to(road,{
-            opacity: 0,
-            duration: 1,
-          }, 1)
+        .to(this.slider, {
+          opacity: 0,
+          duration:  duration_d[0],
+          y: -20
+        },  duration_d[1])
 
-          .to(this.slider,{
-            opacity: 0,
-            duration: 1,
-            y: -20
-          }, 0.5)
+        .to(cyclist, {
+          x: 1250,
+          duration:  duration_e[0],
+          opacity: 0,
+        },  duration_e[1]);
 
-          .to(cyclist,{
-            x: 1250,
-            duration: 2,
-            opacity: 0,
-          }, 0.75);
+        this.nextAnimation(this.totalDelay(animation_length))
 
-
-          /*
-          *we will need to reintegrate these once we design for the use browsing backwards
-          .set(this.parallaxTweens, { timeScale: 1 })
-          .set(this.parallaxSelectors, { scaleX: 1 });
-          */
-      }
+      /*
+      *we will need to reintegrate these once we design for the use browsing backwards
+      .set(this.parallaxTweens, { timeScale: 1 })
+      .set(this.parallaxSelectors, { scaleX: 1 });
+      */
+    }
   }
   private moveFrontCardToBack(frontCard: HTMLElement) {
     if (this.slider && frontCard) {
@@ -142,5 +154,27 @@ export class AboutMe {
     }
   }
 
+  private nextAnimation(delay: number) {
+      setTimeout(() => {
+        this.nextScene.update(() => this.scene[1]);
+      }, delay);
+    }
 
-}
+  totalDelay(animationLength: number[][]){
+    var cel_length : number = 0;
+    var delay_length : number = 0;
+    var total : number[]
+     = animationLength.map(([a, b]) => {
+      cel_length += a
+      delay_length += b;
+      console.log(a);
+      console.log(b);
+      total[0] +=  (a - b);
+      console.log(total[0]);
+      return total[0];
+    },)
+    return Promise.all(total).then(() =>{
+      
+    })
+  }
+  }

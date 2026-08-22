@@ -1,5 +1,6 @@
 <div class="wrapper">
 
+@if(nextScene() === scene[0]){
   <div class="left-side">
     <div class="slider" (click)="clickCard()">
 
@@ -646,4 +647,9 @@
         </svg>
 
     <img class="bike" src="/girl-riding-bike.svg" alt="">
+  }
+
+@if(nextScene() === scene[1]){
+  <p>poo and fart</p>
+    }
 </div>
