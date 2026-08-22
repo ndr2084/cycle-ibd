@@ -47,22 +47,14 @@ export class AboutMe {
       );
   }
 
-  ngOnDestroy() {
-    this.parallaxTweens.forEach((tween) => tween.kill());
-  }
-
   clickCard() {
-    this.slider = document.querySelector('.slider') as HTMLElement;
     if (this.isAnimating) return;
-
+    this.slider = document.querySelector('.slider') as HTMLElement;
     const cards = Array.from(this.slider.querySelectorAll('.card')) as HTMLElement[];
     const frontCard = cards[0];
-    const cylceCel = document.querySelector(".cycle-cel") as HTMLElement;
-    const road = cylceCel.querySelector('#road') as HTMLElement;
     const cyclist = document.querySelector(".bike") as HTMLElement;
     const otherCards = cards.filter((card) => card !== frontCard);
     const isMissionCard = frontCard.classList.contains('card-three');
-
     this.isAnimating = true;
 
     const tl = gsap.timeline({ onComplete: () => (this.isAnimating = false) });
@@ -99,12 +91,15 @@ export class AboutMe {
       });
 
     if (isMissionCard) {
+      const cylceCel = document.querySelector(".cycle-cel") as HTMLElement;
+      const road = cylceCel.querySelector('#road') as HTMLElement;
       const duration_a = [1, 0],
-       duration_b = [1,1],
+        duration_b = [1, 1],
         duration_c = [1, 1],
-         duration_d = [1, 0.5],
-          duration_e = [1,0.5];
+        duration_d = [1, 0.5],
+        duration_e = [1, 0.5];
       const animation_length = [duration_a, duration_b, duration_c, duration_d, duration_e];
+
       // Whip pan: ramp each parallax layer's playback speed and stretch it
       // horizontally over 1s to sell the illusion of a fast forward acceleration.
       tl.to(this.parallaxTweens, {
@@ -115,30 +110,30 @@ export class AboutMe {
         .to(this.parallaxSelectors, {
           scaleX: 1.6,
           transformOrigin: 'right center',
-          duration:  duration_b[0],
+          duration: duration_b[0],
           opacity: 0,
 
           ease: 'power2.in',
-        },  duration_b[1])
+        }, duration_b[1])
 
         .to(road, {
           opacity: 0,
-          duration:  duration_c[0],
-        },  duration_c[1])
+          duration: duration_c[0],
+        }, duration_c[1])
 
         .to(this.slider, {
           opacity: 0,
-          duration:  duration_d[0],
+          duration: duration_d[0],
           y: -20
-        },  duration_d[1])
+        }, duration_d[1])
 
         .to(cyclist, {
           x: 1250,
-          duration:  duration_e[0],
+          duration: duration_e[0],
           opacity: 0,
-        },  duration_e[1]);
+        }, duration_e[1]);
 
-        this.nextAnimation(this.totalDelay(animation_length))
+        this.nextAnimation(this.delaySum(animation_length));
 
       /*
       *we will need to reintegrate these once we design for the use browsing backwards
@@ -155,26 +150,17 @@ export class AboutMe {
   }
 
   private nextAnimation(delay: number) {
-      setTimeout(() => {
-        this.nextScene.update(() => this.scene[1]);
-      }, delay);
-    }
+    setTimeout(() => {
+      this.nextScene.update(() => this.scene[1]);
+    }, delay);
+  }
 
-  totalDelay(animationLength: number[][]){
-    var cel_length : number = 0;
-    var delay_length : number = 0;
-    var total : number[]
-     = animationLength.map(([a, b]) => {
-      cel_length += a
-      delay_length += b;
-      console.log(a);
-      console.log(b);
-      total[0] +=  (a - b);
-      console.log(total[0]);
-      return total[0];
-    },)
-    return Promise.all(total).then(() =>{
-      
-    })
+  private delaySum(animationLength: number[][]){
+    var sum: number = 0;
+    var MILLISECONDS_TO_SECONDS: number = 1000;
+    animationLength.forEach(element => {
+      sum += element[0] - element[1]
+    });
+    return sum * MILLISECONDS_TO_SECONDS;
   }
-  }
+}
