@@ -1,17 +1,47 @@
+<div class="animation-wrapper">
+  <svg class="transition" viewBox="0 0 100 100" preserveAspectRatio="xMidYMin slice">
+    <defs>
+      <linearGradient id="grad" x1="0" y1="0" x2="99" y2="99" gradientUnits="userSpaceOnUse">
+         <stop offset="0.2" stop-color="rgb(255, 135, 9)" />
+          <stop offset="0.7" stop-color="rgb(247, 189, 248)" />
+      </linearGradient>
+    </defs>
+    <path class="path" stroke="url(#grad)" fill="url(#grad)" stroke-width="2px" vector-effect="non-scaling-stroke" d="M 0 100 V 100 Q 50 100 100 100 V 100 z" />
+  </svg>
+</div>
+
 <div class="wrapper">
   <div class="close-btn">
-    <button (click)="closeModal()">Close</button>
+    <button (click)="closeModal()">
+      <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
+    </button>
   </div>
 
   <div class="card account-creation">
-    <h1>Create an Account</h1>
+    <div class="title">
+    <h1>Sign up</h1>
+  </div>
+  <div class="paragraph">
+    <p>Create your account today and starting raising money for IBD research</p>
+  </div>
   </div>
 
   <div class="card mission-statement">
-    <h1>Our Mission Statement</h1>
+  <div class="title">
+    <h1>Our Mission</h1>
+  </div>
+
+    <div class="paragraph">
+    <p>Understanding what we do</p>
+  </div>
   </div>
 
   <div class="card sign-in">
+    <div class="title">
     <h1>Sign in</h1>
+  </div>
+  <div class="paragraph">
+    Welcome back
+  </div>
   </div>
 </div>

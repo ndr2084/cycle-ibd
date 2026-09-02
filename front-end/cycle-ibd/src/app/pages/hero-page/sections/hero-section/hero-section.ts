@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { Header } from '../../../../components/header/header';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,16 +11,16 @@ gsap.registerPlugin(ScrollTrigger,SplitText, MorphSVGPlugin);
 
 @Component({
   selector: 'app-hero-section',
-  imports: [Header],
+  imports: [Header, SidePanelModal],
   templateUrl: './hero-section.html',
   styleUrl: './hero-section.scss',
 })
 export class HeroSection {
 
   /*imports*/
+  dialog = inject(Dialog);
   private router = inject(Router);
-  showCards = signal(false);
-  private dialog = inject(Dialog);
+  htmlCards = signal(false);
   ngAfterViewInit(){
     document.fonts.ready.then(() => {
       gsap.set("button", { opacity: 1 });
@@ -46,18 +46,11 @@ export class HeroSection {
 
 
   protected getStarted(){
-    this.showCards.update(bool => !bool);
-    // showCards() gates the .path element behind an @if - it isn't in the
-    // DOM yet on this tick, so wait a frame for Angular to render it before
-    // querying for it.
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      const path = document.querySelector(".path");
-      const start = "M 0 100 V 50 Q 50 0 100 50 V 100 z";
-      const end = "M 0 100 V 0 Q 50 0 100 0 V 100 z";
 
-      gsap.timeline()
-        .to(path, { morphSVG: start, ease: "power2.in" })
-        .to(path, { morphSVG: end, ease: "power2.out" });
-    }));
+    this.dialog.open(SidePanelModal, {
+      disableClose: true,
+      height: '100%',
+      width: '100%',
+    } );
   }
-  }
+}
