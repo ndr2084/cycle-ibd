@@ -1,0 +1,48 @@
+:host{
+
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: white;
+    color: black;
+    flex-direction: row;
+    width: 100vw;
+    height: 30vh;
+    animation: custom-dialog-enter 1.0s ease;
+}
+
+h1{
+  font-size: 1.2rem;
+}
+
+.card{
+  height: 100%;
+  border-radius: 16px;
+  background: white;
+  flex: 1 1 0px;
+  width: 400px;
+  border: 1px solid red;
+}
+
+.wrapper{
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@keyframes custom-dialog-enter {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}

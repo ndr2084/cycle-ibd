@@ -149,6 +149,8 @@ export class AboutMe {
     }
   }
 
+  /*helper functions start*/
+
   private nextAnimation(delay: number) {
     setTimeout(() => {
       this.nextScene.update(() => this.scene[1]);
@@ -163,4 +165,6 @@ export class AboutMe {
     });
     return sum * MILLISECONDS_TO_SECONDS;
   }
+
+  /*helper functions end*/
 }
