@@ -1,9 +1,12 @@
 :host{
-  padding: 32px;
+  width: 100%;
+  color: white;
 }
 ul{
+  padding: 16px 32px;
   display: flex;
-  width: 100%;
+  flex: 0 1 1px;
+
   justify-content: space-between;
   gap: 32px;
 }
@@ -14,7 +17,7 @@ ul  > :first-child{
 }
 
 img{
-  width: 90px;
+  width: 50px;
 }
 
 ul  > :last-child{
@@ -24,7 +27,7 @@ ul  > :last-child{
 }
 
 h1{
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -3%;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 15%;
 }

@@ -18,34 +18,8 @@ export class AboutMe {
   nextScene = signal(this.scene[0]);
   private slider!: HTMLElement;
   private isAnimating = false;
-  private parallaxTweens: gsap.core.Tween[] = [];
-  private readonly parallaxSelectors = [
-    '.scroller-road-lines',
-    '.scroller-near-trees',
-    '.scroller-far-trees',
-    '.scroller-mountains',
-  ];
 
 
-
-  ngAfterViewInit() {
-    const layers: [string, number][] = [
-      [this.parallaxSelectors[0], 2],
-      [this.parallaxSelectors[1], 5],
-      [this.parallaxSelectors[2], 20],
-      [this.parallaxSelectors[3], 120],
-    ];
-
-    this.parallaxTweens = layers
-      .map(([selector, duration]) => gsap
-        .to(selector, {
-          x: -700,
-          duration,
-          ease: 'none',
-          repeat: -1,
-        })
-      );
-  }
 
   clickCard() {
     if (this.isAnimating) return;
@@ -90,57 +64,6 @@ export class AboutMe {
         ease: 'power1.out',
       });
 
-    if (isMissionCard) {
-      const cylceCel = document.querySelector(".cycle-cel") as HTMLElement;
-      const road = cylceCel.querySelector('#road') as HTMLElement;
-      const duration_a = [1, 0],
-        duration_b = [1, 1],
-        duration_c = [1, 1],
-        duration_d = [1, 0.5],
-        duration_e = [1, 0.5];
-      const animation_length = [duration_a, duration_b, duration_c, duration_d, duration_e];
-
-      // Whip pan: ramp each parallax layer's playback speed and stretch it
-      // horizontally over 1s to sell the illusion of a fast forward acceleration.
-      tl.to(this.parallaxTweens, {
-        timeScale: 12,
-        duration: duration_a[0],
-        ease: 'power2.in',
-      }, duration_a[1])
-        .to(this.parallaxSelectors, {
-          scaleX: 1.6,
-          transformOrigin: 'right center',
-          duration: duration_b[0],
-          opacity: 0,
-
-          ease: 'power2.in',
-        }, duration_b[1])
-
-        .to(road, {
-          opacity: 0,
-          duration: duration_c[0],
-        }, duration_c[1])
-
-        .to(this.slider, {
-          opacity: 0,
-          duration: duration_d[0],
-          y: -20
-        }, duration_d[1])
-
-        .to(cyclist, {
-          x: 1250,
-          duration: duration_e[0],
-          opacity: 0,
-        }, duration_e[1]);
-
-        this.nextAnimation(this.delaySum(animation_length));
-
-      /*
-      *we will need to reintegrate these once we design for the use browsing backwards
-      .set(this.parallaxTweens, { timeScale: 1 })
-      .set(this.parallaxSelectors, { scaleX: 1 });
-      */
-    }
   }
   private moveFrontCardToBack(frontCard: HTMLElement) {
     if (this.slider && frontCard) {
