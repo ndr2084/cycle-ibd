@@ -13,38 +13,53 @@
 
 h1{
   font-size: 3rem;
-  font-weight: 300;
+  line-height: 80px;
+  font-weight: 200;
 }
 
 .card{
-  padding: 64px;
+
+  border: 1px solid rgb(184, 184, 184);
+  background: white;
+  padding: 64px 50px 32px 50px;
   border-radius: 16px;
-  height: 200px;
-  max-width: 300px;
+
+  max-width: 250px;
   flex: 1 1 0px;
-  border: 1px solid rgb(47, 47, 47);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 100px;
   flex-direction: column;
+  transition: 0.48s background, 0.5s filter;
+}
+
+.card:hover{
+  background: rgb(204, 231, 255);
+  filter: drop-shadow(#d9fcff78 5px 5px 2px);
 }
 
 .title{
+  display: flex;
+  align-items: end;
   height: 50%;
   width: 100%;
-  color: white;
-  font-size: 40px;
+  color: black;
+
   letter-spacing: -4%;
   line-height: 60px;
 
 }
 
 .paragraph {
-  height: 50%;
+  height: 150px;
   width: 100%;
-  color: white;
-  word-spacing: 10px;
+  color: black;
+  word-spacing: -2px;
+  line-height: 35px;
+  font-size: 24px;
+  font-weight: 200;
 
 }
 
