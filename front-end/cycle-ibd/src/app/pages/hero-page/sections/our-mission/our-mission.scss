@@ -2,6 +2,7 @@
 :host{
   position: relative;
   height: unset;
+  width: 100vw;
   margin: 0;
 }
 
@@ -17,13 +18,31 @@
 }
 
 .firstContainer {
-  padding: 64px;
+  padding: 0 64px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 100vh;
   background: #060717;
+  position: relative;
+}
+
+.road{
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.road-1{
+  --reveal: 0%;
+  -webkit-mask-image:
+    linear-gradient(to bottom, #000 0%, #000 var(--reveal),
+    transparent calc(var(--reveal) + 60%));
+  mask-image:
+    linear-gradient(to bottom, #000 0%, #000 var(--reveal),
+    transparent calc(var(--reveal) + 60%));
 }
 
 .normal > p{
@@ -33,9 +52,6 @@
   color: rgb(150, 149, 149);
 }
 
-.normal-2 > p {
-
-}
 
 .heading{
   display: flex;
@@ -64,6 +80,7 @@ h1{
 }
 
 .lastContainer {
+  position: relative;
   gap: 64px;
   padding: 64px;
   display: flex;
@@ -74,6 +91,7 @@ h1{
 }
 
 .panel{
+  position: relative;
   width: 100vw;
   background: #060717;
 };
@@ -85,6 +103,7 @@ h1{
   align-items: end;
   gap: 84px;
   padding: 64px;
+
 }
 
 .panel-2{

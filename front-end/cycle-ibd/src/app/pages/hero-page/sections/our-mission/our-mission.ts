@@ -22,8 +22,20 @@ export class OurMission {
     console.log(shiftContainerLeft);
 
     gsap.from(".container",
-      {xPercent: shiftContainerLeft});
 
+      {immediateRender: true,
+        xPercent: shiftContainerLeft});
+
+    gsap.to(".road-1", {
+      "--reveal": "100%",
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".firstContainer",
+        start: "top top",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
 
     gsap.to(sections, {
       xPercent: 100 * (sections.length - 1),
