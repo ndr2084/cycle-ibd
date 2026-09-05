@@ -17,9 +17,12 @@ export class OurMission {
 
   ngAfterViewInit() {
     let sections = gsap.utils.toArray(".panel");
+    gsap.from(".container",
+      {xPercent: -((sections.length -1) / (sections.length)) * 100});
+
 
     gsap.to(sections, {
-      xPercent: -100 * (sections.length - 1),
+      xPercent: 100 * (sections.length - 1),
       ease: "none",
       scrollTrigger: {
         trigger: ".container",
