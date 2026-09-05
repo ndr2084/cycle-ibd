@@ -13,12 +13,16 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 export class OurMission {
 
   private container!: HTMLElement | null;
-  private cards!: | null;
 
   ngAfterViewInit() {
+    this.container = document.querySelector(".container")
     let sections = gsap.utils.toArray(".panel");
+    this.container!.style.width = `${sections.length * 100}%`;
+    let shiftContainerLeft = -((sections.length -1) / (sections.length)) * 99;
+    console.log(shiftContainerLeft);
+
     gsap.from(".container",
-      {xPercent: -((sections.length -1) / (sections.length)) * 100});
+      {xPercent: shiftContainerLeft});
 
 
     gsap.to(sections, {
@@ -28,8 +32,7 @@ export class OurMission {
         trigger: ".container",
         pin: true,
         scrub: 1,
-        snap: 1 / (sections.length - 1),
-        end: () => "+=" + document.querySelector<HTMLElement>(".container")!.offsetWidth
+        end: () => "+=" + this.container!.offsetWidth
       }
     });
   }
