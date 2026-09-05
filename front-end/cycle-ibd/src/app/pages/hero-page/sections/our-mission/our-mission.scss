@@ -35,6 +35,16 @@
   height: 100vh;
 }
 
+.road-1{
+  --reveal: 0%;
+  -webkit-mask-image:
+    linear-gradient(to bottom, #000 0%, #000 var(--reveal),
+    transparent calc(var(--reveal) + 60%));
+  mask-image:
+    linear-gradient(to bottom, #000 0%, #000 var(--reveal),
+    transparent calc(var(--reveal) + 60%));
+}
+
 .normal > p{
   font-weight: 200;
   font-size: 32px;
@@ -77,10 +87,6 @@ h1{
   flex-direction: column;
   align-items: start;
   height: 100vh;
-  background: #060717;
-}
-
-.container{
   background: #060717;
 }
 
