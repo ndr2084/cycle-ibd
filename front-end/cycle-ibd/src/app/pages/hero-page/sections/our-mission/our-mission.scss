@@ -1,41 +1,50 @@
-:host{
 
-  height: 100%;
-  width :100%;
+:host{
+  position: relative;
+  height: unset;
+  margin: 0;
 }
 
-.container{
+.container {
+  width: 400%;
+  height: 100vh;
   display: flex;
   flex-wrap: nowrap;
-  height: 100%;
-  width: 300%;
+
 }
 
-
-.card{
-
-  height: 100%;
-  width: 100%;
-}
-
-.panel{
-  height: 100%;
-  width: 100%;
-}
-
-.card1{
-  background: red;
-}
-
-.card2{
-  background: blue;
-}
-
-.card3{
+.firstContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   background: yellow;
 }
 
+.lastContainer {
+  display: flex;
+  height: 100vh;
+  background: yellow;
+  text-align: "center";
+}
 
-.card4{
+.panel{
+  width: 100vw;
+};
+
+.red{
+  background: red;
+}
+
+.orange{
   background: orange;
+}
+
+.blue{
+  background: blue;
+}
+
+.purple{
+  background: purple;
 }
