@@ -1,0 +1,41 @@
+:host{
+
+  height: 100%;
+  width :100%;
+}
+
+.container{
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100%;
+  width: 300%;
+}
+
+
+.card{
+
+  height: 100%;
+  width: 100%;
+}
+
+.panel{
+  height: 100%;
+  width: 100%;
+}
+
+.card1{
+  background: red;
+}
+
+.card2{
+  background: blue;
+}
+
+.card3{
+  background: yellow;
+}
+
+
+.card4{
+  background: orange;
+}
