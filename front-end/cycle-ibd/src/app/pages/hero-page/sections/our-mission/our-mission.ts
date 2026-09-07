@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
+import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, DrawSVGPlugin);
 @Component({
   selector: 'app-my-mission',
   imports: [],
@@ -12,40 +13,60 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 })
 export class OurMission {
 
-  private container!: HTMLElement | null;
+    ngAfterViewInit() {
+      ScrollSmoother.create({
+        wrapper: "#smooth-wrapper",
+        content: "#smooth-content",
+        smooth: 3,
+        effects: true,
+      });
 
-  ngAfterViewInit() {
-    this.container = document.querySelector(".container")
-    let sections = gsap.utils.toArray(".panel");
-    this.container!.style.width = `${sections.length * 100}%`;
-    let shiftContainerLeft = -((sections.length -1) / (sections.length)) * 99;
-    console.log(shiftContainerLeft);
+      let innerPanels = gsap.utils.toArray(".innerpanel");
+      let n = innerPanels.length;
+      let horizontalScroll = -((n - 1) / n) * 100;
 
-    gsap.from(".container",
+      gsap.to(".container", {
+        ease: "none",
+        xPercent: horizontalScroll,
+        scrollTrigger: {
+          trigger: ".container",
+          pin: true,
+          scrub: true,
+          start: "top top",
+          end: () => "+=" + document.querySelector<HTMLElement>(".container")?.offsetWidth,
+        }
+      })
 
-      {immediateRender: true,
-        xPercent: shiftContainerLeft});
 
-    gsap.to(".road-1", {
-      "--reveal": "100%",
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".firstContainer",
-        start: "top top",
-        end: "bottom top",
-        scrub: 1,
-      },
-    });
+      gsap.fromTo(".path-1", { drawSVG: "100% 100%" }, { drawSVG: "100% 0%", duration: 1})
 
-    gsap.to(sections, {
-      xPercent: 100 * (sections.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".container",
-        pin: true,
-        scrub: 1,
-        end: () => "+=" + this.container!.offsetWidth
-      }
-    });
-  }
+      let pipeEndPosition = gsap.fromTo(".path-2", { drawSVG: "0% 0%"}, { drawSVG: "0%, 100%",
+        scrollTrigger:{
+          markers: true,
+          trigger: ".innerpanel-1",
+          start: "top bottom",
+          end: () => "+=" + (document.querySelector<HTMLElement>(".container")!.offsetWidth / 2) ,
+          scrub: true,
+        }
+      });
+
+      let pipeEndPosition2 = gsap.fromTo(".path-3", { drawSVG: "0% 0%"}, { drawSVG: "0%, 100%",
+        scrollTrigger:{
+          trigger: ".innerpanel-1",
+          start: () => pipeEndPosition.scrollTrigger!.end,
+          end: () => "+=" + document.querySelector<HTMLElement>(".container")!.offsetWidth / 1.25,
+          scrub: true,
+        }
+      });
+
+        gsap.fromTo(".path-4", { drawSVG: "0% 0%"}, { drawSVG: "0%, 100%",
+          scrollTrigger:{
+            trigger: ".outerpanel",
+            start: () => pipeEndPosition2.scrollTrigger!.end,
+            end: "bottom bottom",
+            scrub: true,
+          }
+      });
+
+    }
 }

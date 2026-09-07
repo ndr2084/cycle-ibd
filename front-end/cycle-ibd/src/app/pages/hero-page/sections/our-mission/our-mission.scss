@@ -1,129 +1,125 @@
-
 :host{
+  background: rgb(18, 18, 18);
+}
+
+.panel{
   position: relative;
-  height: unset;
   width: 100vw;
-  margin: 0;
-}
-
-.container {
   height: 100vh;
-  display: flex;
-  flex-wrap: nowrap;
 }
 
-.normal{
-  width: 40%;
-
+.heading-container{
+  /* Our Mission */
+  width: fit-content;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 120px;
 }
 
-.firstContainer {
-  padding: 0 64px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-  background: #060717;
-  position: relative;
+.heading-container-1{
+  color: #4EBC62;
 }
 
-.road{
+.heading-container-2{
+  color: #E3F461;
+}
+
+.heading-container-3{
+  color: #CD2023;
+}
+
+.heading-container-4{
+  color: #4EBC62;
+}
+
+.normal-text{
+  width: 100%;
+  /* The importance of outreach, education, and new treatments cannot be understated. Our mission is to fuel Crohn’s and Colitis Canada with donations so they continue to improve the lives of all Canadians living with IBD. */
+  font-style: normal;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 60px;
+  /* or 167% */
+  letter-spacing: 0.1em;
+
+  color: #FFFFFF;
+}
+
+.normal-text-1{
+  width: 600px;
+}
+
+.normal-text-2{
+  width: fit-content;
+}
+
+.normal-text-3{
+  width: 80%;
+}
+
+.normal-text-4{
+  width: 1200px;
+}
+
+.container{
+display: flex;
+width: 200vw;
+flex-wrap: nowrap;
+height: 100vh;
+}
+
+.text-container-outer{
   position: absolute;
   inset: 0;
   width: 100vw;
   height: 100vh;
 }
 
-.road-1{
-  --reveal: 0%;
-  -webkit-mask-image:
-    linear-gradient(to bottom, #000 0%, #000 var(--reveal),
-    transparent calc(var(--reveal) + 60%));
-  mask-image:
-    linear-gradient(to bottom, #000 0%, #000 var(--reveal),
-    transparent calc(var(--reveal) + 60%));
-}
-
-.normal > p{
-  font-weight: 200;
-  font-size: 32px;
-  line-height: 40px;
-  color: rgb(150, 149, 149);
-}
-
-
-.heading{
-  display: flex;
-  flex-direction: column;
-  gap: 64px;
-}
-
-.heading-1{
-  color: #4EBC62;
-}
-
-.heading-2 > h1{
-  color: #AEFF1C;
-}
-
-.heading-3 > h1{
-  color: #CD2023;
-}
-
-h1{
-  line-height: 50px;
-}
-
-.container-outer{
-  width: 100vw;
-}
-
-.lastContainer {
-  position: relative;
-  gap: 64px;
-  padding: 64px;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
+.text-container-inner-1{
+  padding: 0 64px;
   height: 100vh;
-  background: #060717;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
 }
 
-.panel{
-  position: relative;
-  width: 100vw;
-  background: #060717;
-};
+.text-container-inner-2{
+  padding: 0 64px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 62px;
+}
 
-.panel-1{
+.text-container-inner-3{
+  text-align: right;
+  padding: 0 64px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: end;
-  gap: 84px;
-  padding: 64px;
-
+  gap: 64px;
 }
 
-.panel-2{
+.text-container-inner-4{
+  text-align: center;
+  padding: 0 64px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
-  gap: 84px;
-  padding: 64px;
+  align-items: center;
+  gap: 64px;
 }
 
-.heading{
-  font-size: 64px;
-}
 
-.normal{
-  width: 100%;
-  font-size: 16px;
-}
 
-.normal-1{
-  width: 40%;
+svg{
+width: 100vw;
+height: 100vh;
 }
